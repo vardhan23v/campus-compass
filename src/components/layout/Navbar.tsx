@@ -17,7 +17,7 @@ import {
   Sun,
   GraduationCap,
 } from "lucide-react";
-import { useThemeStore } from "@/store/useThemeStore";
+import { useTheme } from "next-themes";
 import { useCompareStore } from "@/store/useCompareStore";
 import { cn } from "@/lib/utils";
 
@@ -30,10 +30,15 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
-  const { theme, toggleTheme } = useThemeStore();
+  const { theme, setTheme } = useTheme();
   const compareCount = useCompareStore((s) => s.colleges.length);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -97,15 +102,15 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             {/* Theme Toggle */}
             <button
-              onClick={toggleTheme}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="flex h-9 w-9 items-center justify-center rounded-lg text-[var(--text-secondary)] transition-all hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)]"
               aria-label="Toggle dark mode"
             >
-              {theme === "dark" ? (
+              {mounted && theme === "dark" ? (
                 <Sun className="h-[18px] w-[18px]" />
-              ) : (
+              ) : mounted ? (
                 <Moon className="h-[18px] w-[18px]" />
-              )}
+              ) : null}
             </button>
 
             {session ? (

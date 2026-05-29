@@ -3,18 +3,8 @@
 import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import { useEffect, useState } from "react";
-import { useThemeStore } from "@/store/useThemeStore";
-
-function ThemeInitializer({ children }: { children: React.ReactNode }) {
-  const theme = useThemeStore((s) => s.theme);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
-
-  return <>{children}</>;
-}
+import { useState } from "react";
+import { ThemeProvider } from "next-themes";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -33,7 +23,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
-        <ThemeInitializer>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
           <Toaster
             position="bottom-right"
@@ -54,7 +44,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
               },
             }}
           />
-        </ThemeInitializer>
+        </ThemeProvider>
       </QueryClientProvider>
     </SessionProvider>
   );
