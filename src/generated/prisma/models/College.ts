@@ -2394,6 +2394,7 @@ export type CollegeCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Colleges.
    */
   data: Prisma.CollegeCreateManyInput | Prisma.CollegeCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -2412,6 +2413,7 @@ export type CollegeCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Colleges.
    */
   data: Prisma.CollegeCreateManyInput | Prisma.CollegeCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

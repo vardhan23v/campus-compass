@@ -406,6 +406,7 @@ export type SavedCollegeCreateOrConnectWithoutUserInput = {
 
 export type SavedCollegeCreateManyUserInputEnvelope = {
   data: Prisma.SavedCollegeCreateManyUserInput | Prisma.SavedCollegeCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
 export type SavedCollegeUpsertWithWhereUniqueWithoutUserInput = {
@@ -453,6 +454,7 @@ export type SavedCollegeCreateOrConnectWithoutCollegeInput = {
 
 export type SavedCollegeCreateManyCollegeInputEnvelope = {
   data: Prisma.SavedCollegeCreateManyCollegeInput | Prisma.SavedCollegeCreateManyCollegeInput[]
+  skipDuplicates?: boolean
 }
 
 export type SavedCollegeUpsertWithWhereUniqueWithoutCollegeInput = {
@@ -1243,6 +1245,7 @@ export type SavedCollegeCreateManyArgs<ExtArgs extends runtime.Types.Extensions.
    * The data used to create many SavedColleges.
    */
   data: Prisma.SavedCollegeCreateManyInput | Prisma.SavedCollegeCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1261,6 +1264,7 @@ export type SavedCollegeCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * The data used to create many SavedColleges.
    */
   data: Prisma.SavedCollegeCreateManyInput | Prisma.SavedCollegeCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
