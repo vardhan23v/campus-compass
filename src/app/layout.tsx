@@ -34,6 +34,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7296278909904240"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="font-sans antialiased">
         <Providers>
           <div className="flex min-h-screen flex-col">
