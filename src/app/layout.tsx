@@ -1,7 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Providers from "./providers";
 import Navbar from "@/components/layout/Navbar";
@@ -35,12 +34,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="font-sans antialiased">
-        <Script
+      <head>
+        {/* Google AdSense verification - must be raw script tag for crawler */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7296278909904240"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
         />
+      </head>
+      <body className="font-sans antialiased">
         <Providers>
           <div className="flex min-h-screen flex-col">
             <Navbar />
